@@ -1,0 +1,29 @@
+//! Deterministic pseudo-random generator (splitmix64).
+
+pub struct Rng(u64);
+
+impl Rng {
+    pub fn new(seed: u64) -> Self {
+        Rng(seed.wrapping_mul(0x9E37_79B9_7F4A_7C15).wrapping_add(0x1234_5678_9ABC_DEF0))
+    }
+
+    #[inline]
+    pub fn next_u64(&mut self) -> u64 {
+        self.0 = self.0.wrapping_add(0x9E37_79B9_7F4A_7C15);
+        let mut z = self.0;
+        z = (z ^ (z >> 30)).wrapping_mul(0xBF58_476D_1CE4_E5B9);
+        z = (z ^ (z >> 27)).wrapping_mul(0x94D0_49BB_1331_11EB);
+        z ^ (z >> 31)
+    }
+
+    /// Uniform integer in [0, n).
+    #[inline]
+    pub fn below(&mut self, n: usize) -> usize {
+        (((self.next_u64() >> 11) as f64 / (1u64 << 53) as f64) * n as f64) as usize % n.max(1)
+    }
+
+    #[inline]
+    pub fn bool(&mut self) -> bool {
+        self.next_u64() & 1 == 1
+    }
+}

@@ -1,0 +1,24 @@
+[package]
+name = "bmf"
+version = "0.1.0"
+edition = "2021"
+authors = ["Flavio Drogo"]
+license = "MIT"
+description = "Exact solver for Boolean matrix factorization: certified bounds and proofs of optimality by a combinatorial branch and bound"
+readme = "README.md"
+keywords = ["boolean-matrix-factorization", "branch-and-bound", "exact-solver"]
+categories = ["algorithms", "mathematics"]
+
+[lib]
+name = "bmf"
+path = "src/lib.rs"
+
+[[bin]]
+name = "bmf"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

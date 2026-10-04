@@ -1,0 +1,11 @@
+# Normalize line endings: text files are stored with LF, checked out per platform.
+* text=auto
+
+*.rs text
+*.py text
+*.sh text eol=lf
+*.md text
+*.toml text
+*.csv text
+*.txt text
+*.cff text

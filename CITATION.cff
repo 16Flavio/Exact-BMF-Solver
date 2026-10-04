@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Exact-BMF-Solver: an exact branch and bound for Boolean matrix factorization"
+type: software
+authors:
+  - family-names: Drogo
+    given-names: Flavio
+    email: Flavio.Drogo@student.umons.ac.be
+    affiliation: "Université de Mons"
+version: 0.1.0
+date-released: 2026-10-04
+license: MIT
+keywords:
+  - Boolean matrix factorization
+  - branch and bound
+  - certified optimality
+  - matrix completion
+abstract: >-
+  An exact solver for Boolean matrix factorization: starting from a given
+  factorization, a combinatorial branch and bound on column patterns returns
+  a certified interval and proves optimality when the two bounds meet. The
+  best known factorizations of the benchmark are included as starting
+  points. Rust, no external dependency. The scripts that rerun every
+  measurement are included.
